@@ -1,106 +1,32 @@
-# 🚀 Deploying Learnovate CRM to Vercel
+# 🚀 Learnovate CRM & Training System
 
-This guide provides step-by-step instructions to deploy the **Learnovate Technologies CRM** to Vercel. This application is built with React, TypeScript, and Tailwind CSS, utilizing a modern ESM-based architecture.
+An ultra-modern, high-end CRM and Training Management System built with React, TypeScript, and Vite.
 
-## 📋 Prerequisites
+## 📦 Vercel Deployment
 
-Before you begin, ensure you have:
-1.  A [Vercel Account](https://vercel.com/signup).
-2.  The project files pushed to a Git repository (GitHub, GitLab, or Bitbucket).
-3.  An **API Key** (if you plan to integrate Gemini AI features later).
+Follow these steps to deploy this application to Vercel:
 
----
+### 1. Push to GitHub
+Ensure all your project files are pushed to a GitHub repository.
 
-## 🛠️ Option 1: Deployment via Vercel Dashboard (Recommended)
+### 2. Connect to Vercel
+1. Go to [vercel.com](https://vercel.com) and sign in.
+2. Click **Add New...** -> **Project**.
+3. Import your **LearnovateCRM** repository.
 
-This is the easiest method and enables automatic deployments whenever you push code to your repository.
+### 3. Configure Build Settings
+Vercel should detect the settings automatically, but verify they are:
+- **Framework Preset**: Vite
+- **Build Command**: `npm run build`
+- **Output Directory**: `dist`
 
-1.  **Import Project**: 
-    *   Go to your [Vercel Dashboard](https://vercel.com/dashboard).
-    *   Click **"Add New..."** and then **"Project"**.
-    *   Select your Git provider and import the `learnovate-crm` repository.
+### 4. Setup Environment Variables
+If you use the AI features, add this in the **Environment Variables** section:
+- **Key**: `GEMINI_API_KEY`
+- **Value**: `[Your Google AI Studio Key]`
 
-2.  **Configure Project Settings**:
-    *   **Framework Preset**: Select **"Other"** (Since this is a custom ESM structure).
-    *   **Root Directory**: Leave as `./` (the default).
-    *   **Build Command**: `npm run build` (or `vite build` if using Vite).
-    *   **Output Directory**: `dist` (or `build`).
-
-3.  **Environment Variables**:
-    *   If your application uses the Gemini API, expand the **Environment Variables** section.
-    *   **Key**: `API_KEY`
-    *   **Value**: *[Your Google AI Studio API Key]*
-    *   Click **Add**.
-
-4.  **Deploy**: 
-    *   Click **"Deploy"**. Vercel will build the project and provide you with a production URL (e.g., `learnovate-crm.vercel.app`).
+### 5. Deploy
+Click **Deploy**. Your site will be live in seconds!
 
 ---
-
-## 💻 Option 2: Deployment via Vercel CLI
-
-If you prefer the command line, follow these steps:
-
-1.  **Install Vercel CLI**:
-    ```bash
-    npm i -g vercel
-    ```
-
-2.  **Login**:
-    ```bash
-    vercel login
-    ```
-
-3.  **Initialize & Deploy**:
-    Navigate to your project folder and run:
-    ```bash
-    vercel
-    ```
-    *   Set up and deploy? **Yes**
-    *   Which scope? **[Your Scope]**
-    *   Link to existing project? **No**
-    *   What's your project's name? **learnovate-crm**
-    *   In which directory is your code located? **./**
-
-4.  **Set Environment Variables via CLI**:
-    ```bash
-    vercel env add API_KEY
-    ```
-
-5.  **Deploy to Production**:
-    ```bash
-    vercel --prod
-    ```
-
----
-
-## ⚙️ Build Settings Reference
-
-For a standard setup, use these settings in the Vercel Project Settings:
-
-| Setting | Value |
-| :--- | :--- |
-| **Build Command** | `npm run build` |
-| **Output Directory** | `dist` |
-| **Install Command** | `npm install` |
-
----
-
-## 🧪 Troubleshooting
-
-### 1. "Module Not Found" Errors
-Ensure all dependencies (like `framer-motion` and `lucide-react`) are listed in your `package.json`. If you are using the `importmap` provided in `index.html`, Vercel will serve these as static assets, but local TSX compilation still requires type definitions.
-
-### 2. White Screen on Load
-Check the browser console. If you see "process is not defined," ensure you are not referencing `process.env` directly in client-side code without a bundler (like Vite) that handles environment variable injection.
-
-### 3. API Key Not Working
-If using Gemini AI features, ensure the `API_KEY` environment variable is added to the **Production**, **Preview**, and **Development** environments in the Vercel Dashboard.
-
----
-
-## 🔒 Security Note
-Never commit your `API_KEY` directly into the source code. Always use `process.env.API_KEY` and manage the value through Vercel's encrypted Environment Variables interface.
-
----
-*Built by Learnovate Technologies Operations Hub*
+*Built for Learnovate Technologies*
