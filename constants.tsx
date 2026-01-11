@@ -1,14 +1,14 @@
 
 import React from 'react';
-import { 
-  Users, 
-  Target, 
-  Briefcase, 
-  FileText, 
-  CreditCard, 
-  GraduationCap, 
-  Calendar, 
-  ShieldCheck, 
+import {
+  Users,
+  Target,
+  Briefcase,
+  FileText,
+  CreditCard,
+  GraduationCap,
+  Calendar,
+  ShieldCheck,
   BarChart3,
   UserCheck,
   UserRoundSearch,
@@ -24,7 +24,9 @@ import {
   Heart,
   Rocket,
   ShieldAlert,
-  Gift
+  Gift,
+  MessageSquare,
+  TrendingUp
 } from 'lucide-react';
 import { UserRole } from './types';
 
@@ -42,6 +44,8 @@ export const NAVIGATION_ITEMS = [
   { name: 'Training', icon: <Calendar className="w-5 h-5" />, roles: [UserRole.DIRECTOR, UserRole.TRAINING_MANAGER, UserRole.OPERATIONS_MANAGER, UserRole.TRAINER] },
   { name: 'Curriculum Hub', icon: <BookOpen className="w-5 h-5" />, roles: [UserRole.TRAINER, UserRole.TRAINING_MANAGER] },
   { name: 'Performance Insights', icon: <LineChart className="w-5 h-5" />, roles: [UserRole.TRAINER, UserRole.DIRECTOR] },
+  { name: 'Feedback Hub', icon: <MessageSquare className="w-5 h-5" />, roles: [UserRole.TRAINER, UserRole.DIRECTOR, UserRole.TRAINING_MANAGER] },
+  { name: 'Student Nexus', icon: <GraduationCap className="w-5 h-5" />, roles: [UserRole.TRAINER, UserRole.DIRECTOR, UserRole.TRAINING_MANAGER] },
   { name: 'Trainers', icon: <UserRoundSearch className="w-5 h-5" />, roles: [UserRole.DIRECTOR, UserRole.TRAINING_MANAGER, UserRole.OPERATIONS_MANAGER] },
   { name: 'Certification', icon: <ShieldCheck className="w-5 h-5" />, roles: [UserRole.DIRECTOR, UserRole.HR] },
   { name: 'Talent Engine', icon: <UserPlus className="w-5 h-5" />, roles: [UserRole.HR, UserRole.DIRECTOR] },
@@ -49,6 +53,8 @@ export const NAVIGATION_ITEMS = [
   { name: 'Growth Strategy', icon: <Rocket className="w-5 h-5" />, roles: [UserRole.HR, UserRole.DIRECTOR] },
   { name: 'Compliance Shield', icon: <ShieldAlert className="w-5 h-5" />, roles: [UserRole.HR, UserRole.DIRECTOR] },
   { name: 'Wellness Hub', icon: <Gift className="w-5 h-5" />, roles: [UserRole.HR, UserRole.DIRECTOR] },
+  { name: 'Workforce Analytics', icon: <TrendingUp className="w-5 h-5" />, roles: [UserRole.HR, UserRole.DIRECTOR] },
+  { name: 'Lifecycle Manager', icon: <Users className="w-5 h-5" />, roles: [UserRole.HR, UserRole.DIRECTOR] },
   { name: 'Users', icon: <UserCheck className="w-5 h-5" />, roles: [UserRole.DIRECTOR] },
 ];
 
