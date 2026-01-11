@@ -32,7 +32,7 @@ import { UserRole } from './types';
 
 export const NAVIGATION_ITEMS = [
   { name: 'Dashboard', icon: <BarChart3 className="w-5 h-5" />, roles: Object.values(UserRole) },
-  { name: 'Sales Manager', icon: <Trophy className="w-5 h-5" />, roles: [UserRole.DIRECTOR, UserRole.SALES_MANAGER] },
+  { name: 'Sales Manager', icon: <Trophy className="w-5 h-5" />, roles: [UserRole.DIRECTOR, UserRole.SALES_MANAGER, UserRole.OPERATIONS_MANAGER] },
   { name: 'Operations Hub', icon: <Activity className="w-5 h-5" />, roles: [UserRole.DIRECTOR, UserRole.OPERATIONS_MANAGER, UserRole.TRAINING_MANAGER] },
   { name: 'Leads', icon: <Target className="w-5 h-5" />, roles: [UserRole.DIRECTOR, UserRole.SALES_RETAIL, UserRole.SALES_CORPORATE, UserRole.SALES_MANAGER] },
   { name: 'Deals', icon: <Briefcase className="w-5 h-5" />, roles: [UserRole.DIRECTOR, UserRole.SALES_RETAIL, UserRole.SALES_CORPORATE, UserRole.SALES_MANAGER] },
