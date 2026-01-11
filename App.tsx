@@ -91,6 +91,8 @@ import FeedbackHub from './pages/FeedbackHub';
 import StudentNexus from './pages/StudentNexus';
 import WorkforceAnalytics from './pages/WorkforceAnalytics';
 import LifecycleManager from './pages/LifecycleManager';
+import TrainingManagerDashboard from './pages/TrainingManagerDashboard';
+import OperationsDashboard from './pages/OperationsDashboard';
 import LandingPage from './pages/LandingPage';
 
 interface Notification {
@@ -305,6 +307,8 @@ const App: React.FC = () => {
         if (store.currentUser.role === UserRole.DIRECTOR) return <DirectorDashboard store={store} />;
         if (store.currentUser.role === UserRole.SALES_RETAIL) return <SalesRetailDashboard store={store} />;
         if (store.currentUser.role === UserRole.SALES_CORPORATE) return <SalesCorporateDashboard store={store} />;
+        if (store.currentUser.role === UserRole.TRAINING_MANAGER) return <TrainingManagerDashboard store={store} />;
+        if (store.currentUser.role === UserRole.OPERATIONS_MANAGER) return <OperationsDashboard store={store} />;
         return <Dashboard store={store} />;
       case 'Sales Manager': return <SalesManagerPage store={store} />;
       case 'Operations Hub': return <OperationsManagerPage store={store} />;
