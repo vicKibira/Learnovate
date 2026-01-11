@@ -1,12 +1,12 @@
 import React, { useMemo, useState } from 'react';
-import { 
-  BarChart3, TrendingUp, Users, Star, 
+import {
+  BarChart3, TrendingUp, Users, Star,
   MessageSquare, ShieldCheck, Heart, Zap,
   CheckCircle2, AlertCircle, Clock, Calendar,
   ArrowUpRight, Target, Sparkles, Activity,
   X, Lightbulb, TrendingDown, BookOpen, Rocket
 } from 'lucide-react';
-import { 
+import {
   BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer,
   AreaChart, Area, PieChart, Pie, Cell, Radar, RadarChart, PolarGrid, PolarAngleAxis
 } from 'recharts';
@@ -32,7 +32,7 @@ const PerformanceInsights: React.FC<{ store: any }> = ({ store }) => {
     const totalLearners = data.learners.filter((l: any) => batches.some(b => b.id === l.trainingId));
     const completions = totalLearners.filter(l => l.completed).length;
     const successRate = totalLearners.length > 0 ? (completions / totalLearners.length) * 100 : 0;
-    
+
     return { batches, totalLearners, completions, successRate };
   }, [data, currentUser.id]);
 
@@ -101,15 +101,15 @@ const PerformanceInsights: React.FC<{ store: any }> = ({ store }) => {
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
         <div>
           <motion.div initial={{ opacity: 0, x: -10 }} animate={{ opacity: 1, x: 0 }} className="flex items-center gap-2 mb-3">
-             <div className="w-10 h-1 bg-emerald-500 rounded-full" />
-             <span className="text-[10px] font-black text-emerald-500 uppercase tracking-[0.4em]">Teaching Quality</span>
+            <div className="w-10 h-1 bg-emerald-500 rounded-full" />
+            <span className="text-[10px] font-black text-emerald-500 uppercase tracking-[0.4em]">Teaching Quality</span>
           </motion.div>
           <h2 className="text-5xl font-black text-slate-900 dark:text-white tracking-tighter">
             Success <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 to-teal-500">Reports</span>
           </h2>
           <p className="text-slate-500 dark:text-slate-400 font-bold text-lg mt-3">Tracking how well classes are going and how students are progressing.</p>
         </div>
-        <button 
+        <button
           onClick={() => setShowImprovementModal(true)}
           className="px-8 py-5 bg-emerald-600 text-white rounded-[2rem] font-black uppercase tracking-widest text-[10px] shadow-2xl flex items-center gap-3 transition-all hover:bg-emerald-700"
         >
@@ -126,8 +126,8 @@ const PerformanceInsights: React.FC<{ store: any }> = ({ store }) => {
         ].map((stat, i) => (
           <motion.div key={i} className="glass p-10 rounded-[3rem] shadow-xl border border-white/60 dark:border-white/5">
             <div className="flex items-start justify-between mb-8">
-               <div className={`p-4 rounded-2xl ${stat.color} shadow-inner`}>{stat.icon}</div>
-               <span className="text-[10px] font-black text-emerald-500 bg-emerald-50 px-3 py-1.5 rounded-full">+4.2%</span>
+              <div className={`p-4 rounded-2xl ${stat.color} shadow-inner`}>{stat.icon}</div>
+              <span className="text-[10px] font-black text-emerald-500 bg-emerald-50 px-3 py-1.5 rounded-full">+4.2%</span>
             </div>
             <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">{stat.label}</p>
             <h3 className="text-4xl font-black text-slate-900 dark:text-white tracking-tighter">{stat.value}</h3>
@@ -156,7 +156,7 @@ const PerformanceInsights: React.FC<{ store: any }> = ({ store }) => {
           <div className="flex items-center justify-between mb-12">
             <h3 className="text-2xl font-black text-slate-900 dark:text-white tracking-tight">Satisfaction Trend</h3>
             <div className="flex items-center gap-2 px-4 py-2 bg-emerald-50 text-emerald-600 rounded-xl text-[10px] font-black uppercase tracking-widest">
-               Real-time
+              Real-time
             </div>
           </div>
           <div className="h-[320px] w-full">
@@ -164,12 +164,12 @@ const PerformanceInsights: React.FC<{ store: any }> = ({ store }) => {
               <AreaChart data={sentimentData}>
                 <defs>
                   <linearGradient id="colorSatisfaction" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="5%" stopColor="#10b981" stopOpacity={0.3}/>
-                    <stop offset="95%" stopColor="#10b981" stopOpacity={0}/>
+                    <stop offset="5%" stopColor="#10b981" stopOpacity={0.3} />
+                    <stop offset="95%" stopColor="#10b981" stopOpacity={0} />
                   </linearGradient>
                 </defs>
                 <CartesianGrid strokeDasharray="10 10" vertical={false} stroke={isDark ? '#334155' : '#e2e8f0'} />
-                <XAxis dataKey="name" axisLine={false} tickLine={false} tick={{fill: '#94a3b8', fontSize: 10, fontWeight: 900}} />
+                <XAxis dataKey="name" axisLine={false} tickLine={false} tick={{ fill: '#94a3b8', fontSize: 10, fontWeight: 900 }} />
                 <Tooltip contentStyle={{ borderRadius: '24px' }} />
                 <Area type="monotone" dataKey="satisfaction" stroke="#10b981" strokeWidth={6} fillOpacity={1} fill="url(#colorSatisfaction)" dot={{ r: 8, fill: '#10b981' }} />
               </AreaChart>
@@ -182,8 +182,8 @@ const PerformanceInsights: React.FC<{ store: any }> = ({ store }) => {
       <AnimatePresence>
         {showImprovementModal && (
           <div className="fixed inset-0 z-[200] flex items-center justify-center p-6 md:p-12">
-            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={() => setShowImprovementModal(false)} className="absolute inset-0 bg-slate-950/90 backdrop-blur-2xl" />
-            <motion.div 
+            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={() => setShowImprovementModal(false)} className="absolute inset-0 bg-white/20 dark:bg-slate-900/40 backdrop-blur-xl" />
+            <motion.div
               initial={{ opacity: 0, scale: 0.9, y: 50 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.9, y: 50 }}
@@ -191,40 +191,40 @@ const PerformanceInsights: React.FC<{ store: any }> = ({ store }) => {
             >
               <div className="p-10 border-b border-slate-100 dark:border-white/5 flex items-center justify-between bg-gradient-to-r from-emerald-50/50 to-white dark:from-slate-800/50 dark:to-slate-900">
                 <div className="flex items-center gap-6">
-                   <div className="w-16 h-16 bg-emerald-600 rounded-2xl flex items-center justify-center text-white shadow-xl">
-                      <Sparkles className="w-8 h-8" />
-                   </div>
-                   <div>
-                     <h3 className="text-3xl font-black text-slate-900 dark:text-white tracking-tighter">Strategic Growth</h3>
-                     <p className="text-[10px] font-black text-emerald-600 uppercase tracking-widest mt-2">Personalized insights for performance optimization</p>
-                   </div>
+                  <div className="w-16 h-16 bg-emerald-600 rounded-2xl flex items-center justify-center text-white shadow-xl">
+                    <Sparkles className="w-8 h-8" />
+                  </div>
+                  <div>
+                    <h3 className="text-3xl font-black text-slate-900 dark:text-white tracking-tighter">Strategic Growth</h3>
+                    <p className="text-[10px] font-black text-emerald-600 uppercase tracking-widest mt-2">Personalized insights for performance optimization</p>
+                  </div>
                 </div>
                 <button onClick={() => setShowImprovementModal(false)} className="p-4 bg-white dark:bg-slate-800 border border-slate-100 dark:border-white/5 text-slate-400 rounded-2xl group">
-                   <X className="w-7 h-7 group-hover:rotate-90 transition-transform" />
+                  <X className="w-7 h-7 group-hover:rotate-90 transition-transform" />
                 </button>
               </div>
 
               <div className="p-10 space-y-6">
                 {dynamicTips.map((tip, i) => (
                   <div key={i} className="p-6 bg-slate-50 dark:bg-slate-800 rounded-[2rem] border border-slate-100 dark:border-slate-700 flex gap-6">
-                     <div className="w-12 h-12 bg-white dark:bg-slate-700 rounded-2xl flex items-center justify-center shadow-sm flex-shrink-0">
-                        {tip.icon}
-                     </div>
-                     <div>
-                        <div className="flex items-center gap-3 mb-1">
-                           <h4 className="text-lg font-black text-slate-900 dark:text-white leading-tight">{tip.title}</h4>
-                           <span className={`px-3 py-1 rounded-lg text-[8px] font-black uppercase tracking-widest ${tip.impact === 'High' ? 'bg-rose-50 text-rose-600' : 'bg-amber-50 text-amber-600'}`}>
-                              {tip.impact} Impact
-                           </span>
-                        </div>
-                        <p className="text-sm font-medium text-slate-500 dark:text-slate-400 leading-relaxed">{tip.description}</p>
-                     </div>
+                    <div className="w-12 h-12 bg-white dark:bg-slate-700 rounded-2xl flex items-center justify-center shadow-sm flex-shrink-0">
+                      {tip.icon}
+                    </div>
+                    <div>
+                      <div className="flex items-center gap-3 mb-1">
+                        <h4 className="text-lg font-black text-slate-900 dark:text-white leading-tight">{tip.title}</h4>
+                        <span className={`px-3 py-1 rounded-lg text-[8px] font-black uppercase tracking-widest ${tip.impact === 'High' ? 'bg-rose-50 text-rose-600' : 'bg-amber-50 text-amber-600'}`}>
+                          {tip.impact} Impact
+                        </span>
+                      </div>
+                      <p className="text-sm font-medium text-slate-500 dark:text-slate-400 leading-relaxed">{tip.description}</p>
+                    </div>
                   </div>
                 ))}
               </div>
-              
+
               <div className="p-10 bg-slate-900 border-t border-white/10 text-center">
-                 <button onClick={() => setShowImprovementModal(false)} className="px-10 py-4 bg-white text-slate-900 rounded-2xl font-black text-[10px] uppercase tracking-widest hover:bg-emerald-400 transition-all">Understood</button>
+                <button onClick={() => setShowImprovementModal(false)} className="px-10 py-4 bg-white text-slate-900 rounded-2xl font-black text-[10px] uppercase tracking-widest hover:bg-emerald-400 transition-all">Understood</button>
               </div>
             </motion.div>
           </div>

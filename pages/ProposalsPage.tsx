@@ -6,7 +6,7 @@ const ProposalsPage: React.FC<{ store: any }> = ({ store }) => {
   const { data, createProposal, acceptProposal } = store;
   const [showCreate, setShowCreate] = useState(false);
   const [selectedDeal, setSelectedDeal] = useState('');
-  
+
   const [items, setItems] = useState([{ name: '', price: 0, duration: '24 Hours' }]);
 
   const handleAddItem = () => setItems([...items, { name: '', price: 0, duration: '24 Hours' }]);
@@ -23,7 +23,7 @@ const ProposalsPage: React.FC<{ store: any }> = ({ store }) => {
     <div className="space-y-6 animate-in fade-in duration-500">
       <div className="flex items-center justify-between">
         <h2 className="text-2xl font-bold text-slate-800">Proposals</h2>
-        <button 
+        <button
           onClick={() => setShowCreate(true)}
           className="flex items-center gap-2 px-5 py-2.5 bg-indigo-600 text-white rounded-xl font-bold hover:bg-indigo-700 shadow-lg shadow-indigo-100 transition-all"
         >
@@ -39,15 +39,14 @@ const ProposalsPage: React.FC<{ store: any }> = ({ store }) => {
               <div className="p-3 bg-indigo-50 rounded-2xl text-indigo-600">
                 <FileText className="w-6 h-6" />
               </div>
-              <span className={`px-3 py-1 rounded-full text-[10px] font-black uppercase ${
-                prop.status === 'Accepted' ? 'bg-emerald-100 text-emerald-600' : 
-                prop.status === 'Rejected' ? 'bg-rose-100 text-rose-600' : 
-                'bg-blue-100 text-blue-600'
-              }`}>
+              <span className={`px-3 py-1 rounded-full text-[10px] font-black uppercase ${prop.status === 'Accepted' ? 'bg-emerald-100 text-emerald-600' :
+                prop.status === 'Rejected' ? 'bg-rose-100 text-rose-600' :
+                  'bg-blue-100 text-blue-600'
+                }`}>
                 {prop.status}
               </span>
             </div>
-            
+
             <h3 className="text-lg font-bold text-slate-800">{prop.id}</h3>
             <p className="text-sm text-slate-500 mb-6">{prop.clientName}</p>
 
@@ -66,7 +65,7 @@ const ProposalsPage: React.FC<{ store: any }> = ({ store }) => {
                 <p className="text-xl font-bold text-slate-800">${prop.totalValue.toLocaleString()}</p>
               </div>
               {prop.status === 'Sent' && (
-                <button 
+                <button
                   onClick={() => acceptProposal(prop.id)}
                   className="px-4 py-2 bg-emerald-500 text-white rounded-xl text-xs font-bold hover:bg-emerald-600 shadow-lg shadow-emerald-100"
                 >
@@ -85,7 +84,7 @@ const ProposalsPage: React.FC<{ store: any }> = ({ store }) => {
       </div>
 
       {showCreate && (
-        <div className="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+        <div className="fixed inset-0 bg-white/20 dark:bg-slate-900/40 backdrop-blur-xl z-50 flex items-center justify-center p-4">
           <div className="bg-white rounded-3xl w-full max-w-2xl shadow-2xl overflow-hidden">
             <div className="p-6 border-b border-slate-100 flex items-center justify-between bg-slate-50/50">
               <h3 className="text-xl font-bold text-slate-800">Draft Training Proposal</h3>
@@ -94,7 +93,7 @@ const ProposalsPage: React.FC<{ store: any }> = ({ store }) => {
             <form onSubmit={handleSubmit} className="p-8">
               <div className="mb-6">
                 <label className="text-xs font-bold text-slate-500 uppercase block mb-2">Select Active Deal</label>
-                <select 
+                <select
                   required
                   value={selectedDeal}
                   onChange={e => setSelectedDeal(e.target.value)}
@@ -113,10 +112,10 @@ const ProposalsPage: React.FC<{ store: any }> = ({ store }) => {
                   <div key={idx} className="grid grid-cols-12 gap-3 items-end bg-slate-50 p-4 rounded-2xl">
                     <div className="col-span-6 space-y-1">
                       <label className="text-[10px] font-bold text-slate-400">Course Name</label>
-                      <input 
-                        type="text" 
+                      <input
+                        type="text"
                         required
-                        value={item.name} 
+                        value={item.name}
                         onChange={e => {
                           const newItems = [...items];
                           newItems[idx].name = e.target.value;
@@ -128,10 +127,10 @@ const ProposalsPage: React.FC<{ store: any }> = ({ store }) => {
                     </div>
                     <div className="col-span-3 space-y-1">
                       <label className="text-[10px] font-bold text-slate-400">Price ($)</label>
-                      <input 
-                        type="number" 
+                      <input
+                        type="number"
                         required
-                        value={item.price} 
+                        value={item.price}
                         onChange={e => {
                           const newItems = [...items];
                           newItems[idx].price = Number(e.target.value);
@@ -141,34 +140,34 @@ const ProposalsPage: React.FC<{ store: any }> = ({ store }) => {
                       />
                     </div>
                     <div className="col-span-3 flex items-center gap-2">
-                       <div className="flex-1 space-y-1">
+                      <div className="flex-1 space-y-1">
                         <label className="text-[10px] font-bold text-slate-400">Hours</label>
-                        <select 
-                           className="w-full px-2 py-2 bg-white border border-slate-200 rounded-lg text-xs"
-                           value={item.duration}
-                           onChange={e => {
-                             const newItems = [...items];
-                             newItems[idx].duration = e.target.value;
-                             setItems(newItems);
-                           }}
+                        <select
+                          className="w-full px-2 py-2 bg-white border border-slate-200 rounded-lg text-xs"
+                          value={item.duration}
+                          onChange={e => {
+                            const newItems = [...items];
+                            newItems[idx].duration = e.target.value;
+                            setItems(newItems);
+                          }}
                         >
                           <option>8 Hours</option>
                           <option>24 Hours</option>
                           <option>40 Hours</option>
                         </select>
-                       </div>
-                       <button 
-                        type="button" 
+                      </div>
+                      <button
+                        type="button"
                         onClick={() => setItems(items.filter((_, i) => i !== idx))}
                         className="p-2 text-rose-500 hover:bg-rose-50 rounded-lg mb-0.5"
-                       >
-                         <Trash2 className="w-4 h-4" />
-                       </button>
+                      >
+                        <Trash2 className="w-4 h-4" />
+                      </button>
                     </div>
                   </div>
                 ))}
-                <button 
-                  type="button" 
+                <button
+                  type="button"
                   onClick={handleAddItem}
                   className="w-full py-3 border-2 border-dashed border-slate-200 rounded-2xl text-slate-500 hover:border-indigo-300 hover:text-indigo-600 transition-all font-medium flex items-center justify-center gap-2 text-sm"
                 >
